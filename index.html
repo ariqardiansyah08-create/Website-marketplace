@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace Sederhana</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f4f4;
+}
+
+header{
+    background:#2c3e50;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+
+.produk{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    width:250px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:15px;
+}
+
+.harga{
+    color:green;
+    font-weight:bold;
+}
+
+button{
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:10px;
+    width:100%;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+
+#keranjang{
+    background:white;
+    margin-top:30px;
+    padding:20px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Marketplace Ariq Store</h1>
+</header>
+
+<div class="container">
+
+    <div class="produk">
+
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200" alt="Produk">
+            <div class="card-body">
+                <h3>Sepatu Sport</h3>
+                <p class="harga">Rp250.000</p>
+                <button onclick="tambahKeranjang('Sepatu Sport',250000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200" alt="Produk">
+            <div class="card-body">
+                <h3>Tas Pria</h3>
+                <p class="harga">Rp150.000</p>
+                <button onclick="tambahKeranjang('Tas Pria',150000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200" alt="Produk">
+            <div class="card-body">
+                <h3>Jam Tangan</h3>
+                <p class="harga">Rp300.000</p>
+                <button onclick="tambahKeranjang('Jam Tangan',300000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="keranjang">
+        <h2>Keranjang Belanja</h2>
+        <ul id="listKeranjang"></ul>
+        <h3>Total: Rp <span id="total">0</span></h3>
+    </div>
+
+</div>
+
+<script>
+let total = 0;
+
+function tambahKeranjang(nama, harga){
+    let li = document.createElement("li");
+    li.textContent = nama + " - Rp " + harga.toLocaleString('id-ID');
+
+    document.getElementById("listKeranjang")
+            .appendChild(li);
+
+    total += harga;
+
+    document.getElementById("total")
+            .textContent = total.toLocaleString('id-ID');
+}
+</script>
+
+</body>
+</html>
